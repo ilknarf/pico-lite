@@ -33,9 +33,6 @@ const Board = styled.div.attrs(({ sideLength }: BoardProps) => ({
   grid-template-columns: repeat(${(props) => props.sideLength}, 1fr);
   background-color: ${(props) => props.theme.tertiary};
   padding: 1rem;
-  margin-top: 5vh;
-  margin-bottom: 2.5vh;
-  border-radius: 1rem;
 `;
 
 export interface Props {

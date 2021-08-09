@@ -14,7 +14,10 @@ const CellDiv = styled.div<CellDivProps>`
     props.cellState === CellState.Empty
       ? props.theme.primary
       : props.theme.secondary};
-  transition: ease-in 0.1s;
+  transition: ease-in 0.12s;
+  :hover {
+    transform: scale(1.05);
+  }
 `;
 
 export interface Props {

@@ -8,14 +8,21 @@ const BuilderLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
   height: 100%;
-  margin: 2rem;
 `;
 
 interface SelectButtonProps {
   selected: boolean;
 }
+
+const BoardContainer = styled.div`
+  margin: 3vh;
+  border: solid;
+  border-color: ${(props) => props.theme.secondary};
+  border-radius: 1rem;
+  border-width: 0.5rem;
+  overflow: hidden;
+`;
 
 const SelectButton = styled.div<SelectButtonProps>`
   color: ${(props) =>
@@ -23,7 +30,7 @@ const SelectButton = styled.div<SelectButtonProps>`
   background-color: ${(props) =>
     props.selected ? props.theme.secondary : props.theme.primary};
   padding: 1rem 0rem;
-  transition: ease-in 0.3s;
+  transition: ease-in 0.2s;
   font-size: 1rem;
   text-align: center;
   width: 4rem;
@@ -47,7 +54,9 @@ export const Builder = () => {
 
   return (
     <BuilderLayout>
-      <Board />
+      <BoardContainer>
+        <Board />
+      </BoardContainer>
       <SelectButtonContainer>
         <SelectButton
           onClick={() => setSize(NonogramSize.Size5x5)}
