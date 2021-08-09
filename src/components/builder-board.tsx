@@ -22,7 +22,9 @@ export interface BoardAction {
 // update to switch block if more actions added
 const boardReducer = (state: Nonogram, action: BoardAction): Nonogram =>
   update(state, {
-    data: { [action.location]: { $apply: (cellState) => updateCellState(cellState) } },
+    data: {
+      [action.location]: { $apply: (cellState) => updateCellState(cellState) },
+    },
   });
 
 const createNonogram = (size: NonogramSize): Nonogram => {
@@ -43,7 +45,7 @@ export const BuilderBoard = (props: Props) => {
   const [board, boardDispatch] = useReducer<
     React.Reducer<Nonogram, BoardAction>,
     NonogramSize
-    >(boardReducer, props.size, createNonogram);
+  >(boardReducer, props.size, createNonogram);
 
   return (
     <BoardDispatch.Provider value={boardDispatch}>
@@ -51,7 +53,11 @@ export const BuilderBoard = (props: Props) => {
         size={props.size}
         board={board}
         cellRender={(cellState: CellState, location: number) => (
-          <BuilderCell cellState={cellState} location={location} key={location}/>
+          <BuilderCell
+            cellState={cellState}
+            location={location}
+            key={location}
+          />
         )}
       />
     </BoardDispatch.Provider>

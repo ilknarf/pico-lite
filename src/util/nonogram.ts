@@ -25,6 +25,6 @@ export const updateCellState = (cellState: CellState): CellState => {
   }
 };
 
-export const createClickHistory =(cellstate: CellState): ClickHistory => ({
+export const createClickHistory = (cellstate: CellState): ClickHistory => ({
   clickedCellState: cellstate,
 });

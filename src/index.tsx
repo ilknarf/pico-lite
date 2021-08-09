@@ -1,10 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { ThemeProvider } from "themes";
-import { Routes } from "./routes";
-import { Header } from "./components/header";
+import { Routes } from "routes";
+import { Header } from "components/header";
 import reportWebVitals from "./reportWebVitals";
-import "@fontsource/aileron";
 
 ReactDOM.render(
   <React.StrictMode>

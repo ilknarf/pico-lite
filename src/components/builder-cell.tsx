@@ -13,10 +13,8 @@ export interface Props {
 export const BuilderCell = (props: Props) => {
   const boardDispatch = useContext(BoardDispatch);
   const handleClick = () => {
-    boardDispatch(createBoardAction(props.location))
+    boardDispatch(createBoardAction(props.location));
   };
 
-  return (
-    <Cell cellState={props.cellState} onMouseDown={handleClick}/>
-  );
+  return <Cell cellState={props.cellState} onMouseDown={handleClick} />;
 };

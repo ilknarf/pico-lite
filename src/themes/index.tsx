@@ -1,9 +1,13 @@
 import * as React from "react";
-import { createGlobalStyle, ThemeProvider as StyledThemeProvider } from "styled-components";
+import {
+  createGlobalStyle,
+  ThemeProvider as StyledThemeProvider,
+} from "styled-components";
 import { normalize } from "styled-normalize";
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
+  
   * {
     font-display: block;
     font-family: "Roboto", sans-serif;

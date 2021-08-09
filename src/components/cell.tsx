@@ -11,11 +11,10 @@ interface CellDivProps {
 
 const CellDiv = styled.div<CellDivProps>`
   background-color: ${(props) =>
-  props.cellState === CellState.Empty
-    ? props.theme.primary
-    : props.theme.secondary};
+    props.cellState === CellState.Empty
+      ? props.theme.primary
+      : props.theme.secondary};
   transition: ease-in 0.1s;
-
 `;
 
 export interface Props {
@@ -28,7 +27,6 @@ interface BaseCellProps extends Props {
 }
 
 const BaseCell = (props: BaseCellProps) => {
-
   return (
     <CellDiv
       cellState={props.cellState}
@@ -42,8 +40,8 @@ export const Cell = (props: Props) => {
   const mouseClickContextState = useContext(MouseClickContext);
   if (!mouseClickContextState) {
     return (
-      <BaseCell cellState={props.cellState} onMouseDown={props.onMouseDown}/>
-    )
+      <BaseCell cellState={props.cellState} onMouseDown={props.onMouseDown} />
+    );
   }
 
   const [clickHistory, setClickHistory] = mouseClickContextState;
@@ -57,9 +55,13 @@ export const Cell = (props: Props) => {
     if (clickHistory?.clickedCellState === props.cellState) {
       props.onMouseDown(e);
     }
-  }
+  };
 
   return (
-    <BaseCell cellState={props.cellState} onMouseDown={onMouseDown} onMouseEnter={onMouseEnter} />
-  )
-}
+    <BaseCell
+      cellState={props.cellState}
+      onMouseDown={onMouseDown}
+      onMouseEnter={onMouseEnter}
+    />
+  );
+};
