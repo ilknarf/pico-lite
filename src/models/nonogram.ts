@@ -1,3 +1,10 @@
+export enum CellState {
+  Filled,
+  Empty,
+  Question,
+  None,
+}
+
 export enum NonogramSize {
   Size5x5,
   Size10x10,
@@ -5,5 +12,5 @@ export enum NonogramSize {
 
 export interface Nonogram {
   readonly size: NonogramSize;
-  readonly data: Array<boolean>;
+  readonly data: Array<CellState>;
 }

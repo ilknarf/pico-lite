@@ -1,58 +1,57 @@
 import * as React from "react";
-import { useReducer } from "react";
-import update from "immutability-helper";
+import { useState } from "react";
 import styled from "styled-components";
-import { Nonogram, NonogramSize } from "models/nonogram";
-import { getNonogramArrayLength, getNonogramSideLength } from "util/nonogram";
-import "./nonogram-board.css";
+import { CellState, Nonogram, NonogramSize } from "models/nonogram";
+import { getNonogramSideLength, } from "util/nonogram";
 
-const BoardProps = {
-
+export interface ClickHistory {
+  // so that only cells that are the same as the initially requested cell state are affected
+  clickedCellState: CellState
 }
 
-const Board = styled.div`
+// used to track the drag effect of the nonogram.
+export const MouseClickContext = React.createContext<[ClickHistory | undefined, React.Dispatch<React.SetStateAction<ClickHistory | undefined>>] | undefined>(undefined);
+
+interface BoardProps {
+  sideLength: number;
+}
+
+const Board = styled.div<BoardProps>`
   display: grid;
-  grid-template-columns: repeat(${props => props.sideLength}, 1fr);
-  
+  width: 25rem;
+  height: 25rem;
+  grid-template-columns: repeat(${(props) => props.sideLength}, 1fr);
+  gap: 1rem;
+  background-color: ${(props) => props.theme.tertiary};
+  padding: 1rem;
 `;
 
-enum BoardActionType {
-  CellClick,
-}
-
-export interface BoardAction {
-  type: BoardActionType;
+export interface CellProps {
+  cellState: CellState;
   location: number;
 }
 
-const BoardDispatch = React.createContext<React.Dispatch<BoardAction>>({} as React.Dispatch<BoardAction>);
-
 export interface Props {
   size: NonogramSize;
+  board: Nonogram;
+  cellRender: (cellState: CellState, location: number) => JSX.Element;
 }
 
-// update to switch block if more actions added
-const boardReducer = (state: Nonogram, event: BoardAction): Nonogram => (
-  update(state, { data: { [event.location]: (isFilled) => !isFilled } })
-);
-
-const createNonogram = (size: NonogramSize): Nonogram => {
-  const arraySize = getNonogramArrayLength(size);
-
-  return {
-    size,
-    data: new Array<boolean>(arraySize),
-  };
-};
-
 export const NonogramBoard = (props: Props) => {
-  const [board, boardDispatch] = useReducer<React.Reducer<Nonogram, BoardAction>, NonogramSize>(boardReducer, props.size, createNonogram);
+  const clickHistoryState = useState<ClickHistory | undefined>(undefined);
+  const setClickHistory = clickHistoryState[1];
+  const sideLength = getNonogramSideLength(props.size);
+  const createCell = props.cellRender;
+
+  const resetClickHistory = () => {
+    setClickHistory(undefined);
+  };
 
   return (
-    <div className="nonogram-board">
-      <BoardDispatch.Provider value={boardDispatch}>
-
-      </BoardDispatch.Provider>
-    </div>
+    <MouseClickContext.Provider value={clickHistoryState}>
+      <Board sideLength={sideLength} onMouseLeave={resetClickHistory} onMouseUp={resetClickHistory}>
+        {props.board.data.map(createCell)}
+      </Board>
+    </MouseClickContext.Provider>
   );
 };

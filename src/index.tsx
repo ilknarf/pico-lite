@@ -1,24 +1,17 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { createGlobalStyle } from "styled-components";
-import { normalize } from "styled-normalize";
+import { ThemeProvider } from "themes";
 import { Routes } from "./routes";
 import { Header } from "./components/header";
 import reportWebVitals from "./reportWebVitals";
 import "@fontsource/aileron";
 
-const GlobalStyle = createGlobalStyle`
-  ${normalize}
-  * {
-    font-family: "Aileron", sans-serif;
-  }
-`;
-
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <Header />
-    <Routes />
+    <ThemeProvider>
+      <Header />
+      <Routes />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
