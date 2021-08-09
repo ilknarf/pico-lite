@@ -22,10 +22,13 @@ interface BoardProps {
   sideLength: number;
 }
 
-const Board = styled.div<BoardProps>`
+const Board = styled.div.attrs(({ sideLength }: BoardProps) => ({
+  sideLength,
+  sideVH: Math.min(sideLength * 10, 60),
+}))`
   display: grid;
-  width: ${(props) => Math.min(props.sideLength * 10, 60)}vh;
-  height: ${(props) => Math.min(props.sideLength * 10, 60)}vh;
+  width: ${(props) => props.sideVH}vh;
+  height: ${(props) => props.sideVH}vh;
   gap: ${(props) => 15 / props.sideLength}%;
   grid-template-columns: repeat(${(props) => props.sideLength}, 1fr);
   background-color: ${(props) => props.theme.tertiary};
