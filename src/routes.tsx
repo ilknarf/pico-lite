@@ -1,13 +1,11 @@
 import * as React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import { HomePage } from "./views/home";
+import { Builder } from "./views/builder";
 
-export const App = () => (
+export const Routes = () => (
   <Router>
     <Switch>
-      <Route path={"/"} component={HomePage} />
+      <Route path={"/"} component={Builder} />
     </Switch>
   </Router>
 );
-
-export default App;

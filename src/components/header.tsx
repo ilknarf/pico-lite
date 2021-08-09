@@ -1,9 +1,9 @@
 import * as React from "react";
 
-export const HomePage = () => (
+export const Header = () => (
   <div>
     <h1>
-      Pico-Lite
+      Picto-Chat
     </h1>
   </div>
 );

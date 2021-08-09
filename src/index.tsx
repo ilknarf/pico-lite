@@ -1,13 +1,24 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Normalize } from "styled-normalize";
-import App from "./App";
+import { createGlobalStyle } from "styled-components";
+import { normalize } from "styled-normalize";
+import { Routes } from "./routes";
+import { Header } from "./components/header";
 import reportWebVitals from "./reportWebVitals";
+import "@fontsource/aileron";
+
+const GlobalStyle = createGlobalStyle`
+  ${normalize}
+  * {
+    font-family: "Aileron", sans-serif;
+  }
+`;
 
 ReactDOM.render(
   <React.StrictMode>
-    <Normalize />
-    <App />
+    <GlobalStyle />
+    <Header />
+    <Routes />
   </React.StrictMode>,
   document.getElementById("root")
 );
