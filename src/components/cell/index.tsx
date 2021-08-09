@@ -1,24 +1,9 @@
 import * as React from "react";
 import { useContext } from "react";
 import { CellState } from "models/nonogram";
-import styled from "styled-components";
 import { MouseClickContext } from "components/nonogram-board";
 import { createClickHistory } from "util/nonogram";
-
-interface CellDivProps {
-  cellState: CellState;
-}
-
-const CellDiv = styled.div<CellDivProps>`
-  background-color: ${(props) =>
-    props.cellState === CellState.Empty
-      ? props.theme.primary
-      : props.theme.secondary};
-  transition: ease-in 0.12s;
-  :hover {
-    transform: scale(1.05);
-  }
-`;
+import { CellDiv } from "./styles";
 
 export interface Props {
   cellState: CellState;
