@@ -24,13 +24,14 @@ interface BoardProps {
 
 const Board = styled.div<BoardProps>`
   display: grid;
-  width: 25rem;
-  height: 25rem;
+  width: ${(props) => Math.min(props.sideLength * 10, 60)}vh;
+  height: ${(props) => Math.min(props.sideLength * 10, 60)}vh;
   gap: ${(props) => 15 / props.sideLength}%;
   grid-template-columns: repeat(${(props) => props.sideLength}, 1fr);
   background-color: ${(props) => props.theme.tertiary};
   padding: 1rem;
-  margin: 1rem;
+  margin-top: 5vh;
+  margin-bottom: 2.5vh;
   border-radius: 1rem;
 `;
 
