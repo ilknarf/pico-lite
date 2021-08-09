@@ -26,7 +26,7 @@ export interface Props {
 
 export const NonogramBoard = (props: Props) => {
   const clickHistoryState = useState<ClickHistory | undefined>(undefined);
-  const setClickHistory = clickHistoryState[1];
+  const [, setClickHistory] = clickHistoryState;
   const sideLength = getNonogramSideLength(props.size);
   const createCell = props.cellRender;
 
