@@ -1,5 +1,6 @@
-import { CellState, NonogramSize } from "models/nonogram";
+import { CellState, Nonogram, NonogramSize } from "models/nonogram";
 import { ClickHistory } from "components/nonogram-board";
+import { boardToString } from "util/builder";
 
 export const getNonogramSideLength = (size: NonogramSize): number => {
   switch (size) {
@@ -28,3 +29,8 @@ export const updateCellState = (cellState: CellState): CellState => {
 export const createClickHistory = (cellstate: CellState): ClickHistory => ({
   clickedCellState: cellstate,
 });
+
+export const buildBoardLink = (board: Nonogram): string => {
+  const size = getNonogramSideLength(board.size);
+  return `${window.location.origin}/${size}x${size}/${boardToString(board)}`;
+};

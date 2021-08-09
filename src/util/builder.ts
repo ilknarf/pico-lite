@@ -7,30 +7,29 @@ export const createBoardAction = (location: number): BoardAction => ({
   location,
 });
 
-const cellToString = (cellState: CellState): string => (
-  cellState === CellState.Filled? "1" : "0"
-);
+const cellToString = (cellState: CellState): string =>
+  cellState === CellState.Filled ? "1" : "0";
 
 // converts board state to hex string
-const boardToString = (board: Nonogram): string => (
-  parseInt(
-    board.data
-      .reduce<string>((acc: string, cellState) => acc + cellToString(cellState), "")
-  ,2)
-    .toString(16)
-);
+export const boardToString = (board: Nonogram): string =>
+  BigInt(
+    board.data.reduce<string>(
+      (acc: string, cellState) => acc + cellToString(cellState),
+      "0b"
+    )
+  ).toString(16);
 
 // converts hex string to board state
-const stringToBoard = (str: string, size: NonogramSize): Nonogram => {
+export const stringToBoard = (str: string, size: NonogramSize): Nonogram => {
   const arrayLength = getNonogramArrayLength(size);
 
   return {
     size,
-    data: parseInt(str, 16)
+    data: BigInt(`0x${str}`)
       .toString(2)
       .slice(arrayLength)
       .padStart(arrayLength, "0")
       .split("")
-      .map((v) => v === "1" ? CellState.Filled : CellState.Empty),
-  }
+      .map((v) => (v === "1" ? CellState.Filled : CellState.Empty)),
+  };
 };

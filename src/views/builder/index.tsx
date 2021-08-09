@@ -2,7 +2,12 @@ import * as React from "react";
 import { useState } from "react";
 import { NonogramSize } from "models/nonogram";
 import { BuilderBoard } from "components/builder-board";
-import { BoardContainer, BuilderLayout, SelectButton, SelectButtonContainer } from "views/builder/styles";
+import {
+  BoardContainer,
+  BuilderLayout,
+  SelectButton,
+  SelectButtonContainer,
+} from "views/builder/styles";
 
 export const Builder = () => {
   const [size, setSize] = useState(NonogramSize.Size5x5);

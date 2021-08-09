@@ -7,9 +7,9 @@ interface CellDivProps {
 
 export const CellDiv = styled.div<CellDivProps>`
   background-color: ${(props) =>
-  props.cellState === CellState.Empty
-    ? props.theme.primary
-    : props.theme.secondary};
+    props.cellState === CellState.Empty
+      ? props.theme.primary
+      : props.theme.secondary};
   transition: ease-in 0.12s;
   :hover {
     transform: scale(1.05);

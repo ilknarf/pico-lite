@@ -12,19 +12,14 @@ interface SelectButtonProps {
 }
 
 export const BoardContainer = styled.div`
-  margin: 3vh;
-  border: solid;
-  border-color: ${(props) => props.theme.secondary};
-  border-radius: 1rem;
-  border-width: 0.5rem;
-  overflow: hidden;
+  margin: 1rem;
 `;
 
 export const SelectButton = styled.div<SelectButtonProps>`
   color: ${(props) =>
-  props.selected ? props.theme.primary : props.theme.secondary};
+    props.selected ? props.theme.primary : props.theme.secondary};
   background-color: ${(props) =>
-  props.selected ? props.theme.secondary : props.theme.primary};
+    props.selected ? props.theme.secondary : props.theme.primary};
   padding: 1rem 0rem;
   transition: ease-in 0.2s;
   font-size: 1rem;
