@@ -14,10 +14,12 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+// haha you got me I'll fine tune the colors sometime, maybe add theming ^_^
 const theme = {
   primary: "white",
   secondary: "black",
   tertiary: "gainsboro",
+  alert: "red",
 };
 
 export interface Props {

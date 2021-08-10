@@ -20,4 +20,7 @@ export const Board = styled.div.attrs(({ sideLength }: BoardProps) => ({
   border-width: 0.5rem;
   overflow: hidden;
   padding: 1rem;
+  // grid layout for solver, unused for builder
+  grid-row: 2;
+  grid-column: 2;
 `;

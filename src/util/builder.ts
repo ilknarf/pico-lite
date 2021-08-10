@@ -1,4 +1,4 @@
-import { BoardActionType } from "components/builder-board";
+import { BoardActionType } from "components/nonogram-board";
 import { BoardAction } from "components/nonogram-board";
 import { CellState, Nonogram, NonogramSize } from "models/nonogram";
 import { getNonogramArrayLength } from "util/nonogram";

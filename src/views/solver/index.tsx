@@ -15,7 +15,6 @@ export const Solver = () => {
   const [solved, setSolved] = useState(false);
   const nonogramSize = getNonogramSize(size);
   const solution = stringToBoard(data, nonogramSize);
-  console.log(solution);
 
   return (
     <>

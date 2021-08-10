@@ -1,17 +1,19 @@
 import * as React from "react";
 import { useContext } from "react";
 import { CellState } from "models/nonogram";
-import { MouseClickContext } from "components/nonogram-board";
+import { BoardActionType, MouseClickContext } from "components/nonogram-board";
 import { createClickHistory } from "util/nonogram";
 import { CellDiv } from "./styles";
 
 export interface Props {
   cellState: CellState;
-  onMouseDown: React.MouseEventHandler<HTMLDivElement>;
+  onAction: (action: BoardActionType) => void;
 }
 
-interface BaseCellProps extends Props {
-  onMouseEnter?: React.MouseEventHandler<HTMLDivElement>;
+interface BaseCellProps  {
+  cellState: CellState;
+  onMouseDown: React.MouseEventHandler<HTMLDivElement>;
+  onMouseEnter: React.MouseEventHandler<HTMLDivElement>;
 }
 
 const BaseCell = (props: BaseCellProps) => {
@@ -26,22 +28,20 @@ const BaseCell = (props: BaseCellProps) => {
 
 export const Cell = (props: Props) => {
   const mouseClickContextState = useContext(MouseClickContext);
-  if (!mouseClickContextState) {
-    return (
-      <BaseCell cellState={props.cellState} onMouseDown={props.onMouseDown} />
-    );
-  }
 
   const [clickHistory, setClickHistory] = mouseClickContextState;
 
   const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    setClickHistory(createClickHistory(props.cellState));
-    props.onMouseDown(e);
+    const actionType = e.button === 0 ? BoardActionType.LeftClick: BoardActionType.RightClick;
+    setClickHistory(createClickHistory(props.cellState, actionType));
+    props.onAction(actionType);
   };
 
-  const onMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+  // need to track click type in ClickHistory due to unreliability of MouseEvent.button for mouseenter
+  // see https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button
+  const onMouseEnter = () => {
     if (clickHistory?.clickedCellState === props.cellState) {
-      props.onMouseDown(e);
+      props.onAction(clickHistory.actionType);
     }
   };
 

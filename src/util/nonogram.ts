@@ -1,5 +1,5 @@
 import { CellState, Nonogram, NonogramSize } from "models/nonogram";
-import { ClickHistory } from "components/nonogram-board";
+import { BoardActionType, ClickHistory } from "components/nonogram-board";
 import { boardToString } from "util/builder";
 
 export const createNonogram = (size: NonogramSize): Nonogram => {
@@ -37,17 +37,20 @@ export const getNonogramArrayLength = (size: NonogramSize): number => {
   return sideLength * sideLength;
 };
 
-export const updateCellState = (cellState: CellState): CellState => {
-  switch (cellState) {
-    case CellState.Empty:
-      return CellState.Filled;
-    default:
-      return CellState.Empty;
+export const updateCellState = (cellState: CellState, action: BoardActionType = BoardActionType.LeftClick): CellState => {
+  // handle right click
+  if (action === BoardActionType.RightClick) {
+    return cellState === CellState.Empty ? CellState.None: CellState.Empty;
   }
+
+  // handle left click
+  return cellState === CellState.Empty ? CellState.Filled: CellState.Empty;
 };
 
-export const createClickHistory = (cellstate: CellState): ClickHistory => ({
+// click history for more intuitive drag effect.
+export const createClickHistory = (cellstate: CellState, action: BoardActionType = BoardActionType.LeftClick): ClickHistory => ({
   clickedCellState: cellstate,
+  actionType: action,
 });
 
 export const buildBoardLink = (board: Nonogram): string => {

@@ -3,7 +3,11 @@ import { useState } from "react";
 import { CellState, Nonogram, NonogramSize } from "models/nonogram";
 import { getNonogramSideLength } from "util/nonogram";
 import { Board } from "components/nonogram-board/styles";
-import { BoardActionType } from "components/builder-board";
+
+export enum BoardActionType {
+  LeftClick,
+  RightClick,
+}
 
 export interface BoardAction {
   type: BoardActionType;
@@ -18,16 +22,13 @@ export const BoardDispatch = React.createContext<React.Dispatch<BoardAction>>(
 export interface ClickHistory {
   // so that only cells that are the same as the initially requested cell state are affected
   clickedCellState: CellState;
+  actionType: BoardActionType;
 }
 
 // used to track the drag effect of the nonogram.
 export const MouseClickContext = React.createContext<
-  | [
-      ClickHistory | undefined,
-      React.Dispatch<React.SetStateAction<ClickHistory | undefined>>
-    ]
-  | undefined
->(undefined);
+  [ClickHistory | undefined, React.Dispatch<React.SetStateAction<ClickHistory | undefined>>]
+>([undefined, () => undefined]);
 
 export interface Props {
   size: NonogramSize;
@@ -53,6 +54,7 @@ export const NonogramBoard = (props: Props) => {
           sideLength={sideLength}
           onMouseLeave={resetClickHistory}
           onMouseUp={resetClickHistory}
+          onContextMenu={(e) => e.preventDefault()}
         >
           {props.board.data.map(createCell)}
         </Board>

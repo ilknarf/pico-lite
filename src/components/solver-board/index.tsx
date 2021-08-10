@@ -1,11 +1,13 @@
 import * as React from "react";
 import { useEffect, useReducer } from "react";
 import { createNonogram, updateCellState } from "util/nonogram";
+import { boardEqual } from "util/solver";
 import { CellState, Nonogram } from "models/nonogram";
 import { BoardAction, NonogramBoard } from "components/nonogram-board";
 import update from "immutability-helper";
-import { BuilderCell } from "components/builder-cell";
-import { SolverLayout } from "./styles";
+import { SolverCell } from "components/solver-cell";
+import { SolverGrid, SolverLayout } from "./styles";
+import { NonogramVerticalLabels } from "components/nonogram-vertical-labels";
 
 export interface Props {
   solution: Nonogram;
@@ -16,7 +18,7 @@ export interface Props {
 const boardReducer = (state: Nonogram, action: BoardAction): Nonogram => (
   update(state, {
       data: {
-        [action.location]: {$apply: (cellState) => updateCellState(cellState)},
+        [action.location]: {$apply: (cellState) => updateCellState(cellState, action.type)},
       },
     })
 );
@@ -28,25 +30,29 @@ export const SolverBoard = (props: Props) => {
     >(boardReducer, createNonogram(nonogramSize));
 
   useEffect(() => {
-    if (props.solution.data.every((cellState, i) => cellState == board.data[i])) {
+    if (boardEqual(props.solution, board)) {
       props.onSolve();
     }
+
   }, [props.solution, board]);
 
   return (
     <SolverLayout>
-      <NonogramBoard
-        size={nonogramSize}
-        board={board}
-        dispatch={boardDispatch}
-        cellRender={(cellState: CellState, location: number) => (
-          <BuilderCell
-            cellState={cellState}
-            location={location}
-            key={location}
-          />
-        )}
-      />
+      <SolverGrid>
+        <NonogramVerticalLabels solution={props.solution}/>
+        <NonogramBoard
+          size={nonogramSize}
+          board={board}
+          dispatch={boardDispatch}
+          cellRender={(cellState: CellState, location: number) => (
+            <SolverCell
+              cellState={cellState}
+              location={location}
+              key={location}
+            />
+          )}
+        />
+      </SolverGrid>
     </SolverLayout>
   );
 };

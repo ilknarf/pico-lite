@@ -4,17 +4,17 @@ import { CellState } from "models/nonogram";
 import { BoardDispatch } from "components/nonogram-board";
 import { createBoardAction } from "util/builder";
 import { Cell } from "components/cell";
+import { BoardActionType } from "components/nonogram-board";
 
 export interface Props {
   cellState: CellState;
   location: number;
 }
 
-export const BuilderCell = (props: Props) => {
+export const SolverCell = (props: Props) => {
   const boardDispatch = useContext(BoardDispatch);
-  const onAction = () => {
-    // treat all clicks as left
-    boardDispatch(createBoardAction(props.location));
+  const onAction = (e: BoardActionType) => {
+    boardDispatch(createBoardAction(props.location, e));
   };
 
   return <Cell cellState={props.cellState} onAction={onAction} />;
