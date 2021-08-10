@@ -2,12 +2,32 @@ import { CellState, Nonogram, NonogramSize } from "models/nonogram";
 import { ClickHistory } from "components/nonogram-board";
 import { boardToString } from "util/builder";
 
+export const createNonogram = (size: NonogramSize): Nonogram => {
+  const arraySize = getNonogramArrayLength(size);
+
+  return {
+    size,
+    data: new Array<CellState>(arraySize).fill(CellState.Empty),
+  };
+};
+
 export const getNonogramSideLength = (size: NonogramSize): number => {
   switch (size) {
     case NonogramSize.Size5x5:
       return 5;
     case NonogramSize.Size10x10:
       return 10;
+  }
+};
+
+export const getNonogramSize = (size: string) => {
+  switch(size) {
+    case "5x5":
+      return NonogramSize.Size5x5;
+    case "10x10":
+      return NonogramSize.Size10x10;
+    default:
+      return NonogramSize.Size5x5;
   }
 };
 

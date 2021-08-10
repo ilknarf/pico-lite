@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useContext } from "react";
 import { CellState } from "models/nonogram";
-import { BoardDispatch } from "components/builder-board";
+import { BoardDispatch } from "components/nonogram-board";
 import { createBoardAction } from "util/builder";
 import { Cell } from "components/cell";
 

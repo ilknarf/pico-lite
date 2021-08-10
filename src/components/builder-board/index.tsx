@@ -1,28 +1,21 @@
 import * as React from "react";
 import { CellState, Nonogram, NonogramSize } from "models/nonogram";
-import { NonogramBoard } from "components/nonogram-board";
+import { BoardAction, NonogramBoard } from "components/nonogram-board";
 import update from "immutability-helper";
 import {
-  getNonogramArrayLength,
-  getNonogramSideLength,
   updateCellState,
 } from "util/nonogram";
 import { useReducer } from "react";
 import { BuilderCell } from "components/builder-cell";
 import { CopyBar } from "components/copy-bar";
-import { buildBoardLink } from "util/nonogram";
+import  {createNonogram, buildBoardLink } from "util/nonogram";
 
 export interface Props {
   size: NonogramSize;
 }
 
 export enum BoardActionType {
-  CellClick,
-}
-
-export interface BoardAction {
-  type: BoardActionType;
-  location: number;
+  LeftClick,
 }
 
 // update to switch block if more actions added
@@ -33,20 +26,6 @@ const boardReducer = (state: Nonogram, action: BoardAction): Nonogram =>
     },
   });
 
-const createNonogram = (size: NonogramSize): Nonogram => {
-  const arraySize = getNonogramArrayLength(size);
-
-  return {
-    size,
-    data: new Array<CellState>(arraySize).fill(CellState.Empty),
-  };
-};
-
-// create context with dispatch for cells to call
-export const BoardDispatch = React.createContext<React.Dispatch<BoardAction>>(
-  {} as React.Dispatch<BoardAction>
-);
-
 export const BuilderBoard = (props: Props) => {
   const [board, boardDispatch] = useReducer<
     React.Reducer<Nonogram, BoardAction>
@@ -54,10 +33,11 @@ export const BuilderBoard = (props: Props) => {
   const link = buildBoardLink(board);
 
   return (
-    <BoardDispatch.Provider value={boardDispatch}>
+    <>
       <NonogramBoard
         size={props.size}
         board={board}
+        dispatch={boardDispatch}
         cellRender={(cellState: CellState, location: number) => (
           <BuilderCell
             cellState={cellState}
@@ -67,6 +47,6 @@ export const BuilderBoard = (props: Props) => {
         )}
       />
       <CopyBar val={link} />
-    </BoardDispatch.Provider>
+      </>
   );
 };

@@ -1,9 +1,10 @@
-import { BoardAction, BoardActionType } from "components/builder-board";
+import { BoardActionType } from "components/builder-board";
+import { BoardAction } from "components/nonogram-board";
 import { CellState, Nonogram, NonogramSize } from "models/nonogram";
 import { getNonogramArrayLength } from "util/nonogram";
 
-export const createBoardAction = (location: number): BoardAction => ({
-  type: BoardActionType.CellClick,
+export const createBoardAction = (location: number, type: BoardActionType = BoardActionType.LeftClick): BoardAction => ({
+  type,
   location,
 });
 
@@ -19,15 +20,23 @@ export const boardToString = (board: Nonogram): string =>
     )
   ).toString(16);
 
-// converts hex string to board state
+// catches in parsing error, replaces with 0
+const parseBigInt = (str: string) => {
+  try {
+    return BigInt(str);
+  } catch (err) {
+    return BigInt(0);
+  }
+};
+
+// converts hex string to board state, empty on BigInt parse error
 export const stringToBoard = (str: string, size: NonogramSize): Nonogram => {
   const arrayLength = getNonogramArrayLength(size);
 
   return {
     size,
-    data: BigInt(`0x${str}`)
+    data: parseBigInt(`0x${str}`)
       .toString(2)
-      .slice(arrayLength)
       .padStart(arrayLength, "0")
       .split("")
       .map((v) => (v === "1" ? CellState.Filled : CellState.Empty)),

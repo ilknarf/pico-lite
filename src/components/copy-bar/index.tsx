@@ -11,13 +11,14 @@ export const CopyBar = (props: Props) => {
   const onClick = () => {
     setCopied(true);
     navigator.clipboard.writeText(props.val);
-    setTimeout(() => {
-      setCopied(false);
-    }, 3000);
+  };
+
+  const onMouseLeave = () => {
+    setCopied(false);
   };
 
   return (
-    <CopyBarContainer onClick={onClick}>
+    <CopyBarContainer onClick={onClick} onMouseLeave={onMouseLeave}>
       <CopyTextBar value={props.val} readOnly />
       <CopyButton>{copied ? "Copied!" : "Share!"}</CopyButton>
     </CopyBarContainer>
