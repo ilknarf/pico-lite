@@ -5,7 +5,7 @@ export const VerticalContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-end;
-  padding: 1.5vh 0.5vh;
+  padding: 2.5vh 0.5vh;
   margin: 0 1vh;
   
   grid-column: 1;
