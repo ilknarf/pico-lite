@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/picto-lite/static/js/main.0fc42316.chunk.js",
-    "main.js.map": "/picto-lite/static/js/main.0fc42316.chunk.js.map",
+    "main.js": "/picto-lite/static/js/main.600ab6e4.chunk.js",
+    "main.js.map": "/picto-lite/static/js/main.600ab6e4.chunk.js.map",
     "runtime-main.js": "/picto-lite/static/js/runtime-main.b293134a.js",
     "runtime-main.js.map": "/picto-lite/static/js/runtime-main.b293134a.js.map",
     "static/js/2.2de58c9e.chunk.js": "/picto-lite/static/js/2.2de58c9e.chunk.js",
@@ -14,6 +14,6 @@
   "entrypoints": [
     "static/js/runtime-main.b293134a.js",
     "static/js/2.2de58c9e.chunk.js",
-    "static/js/main.0fc42316.chunk.js"
+    "static/js/main.600ab6e4.chunk.js"
   ]
 }
