@@ -1,4 +1,4 @@
-# [Picto Chat](htts://ilknarf.github.io/picto-chat)
+# [Picto-Lite](htts://ilknarf.github.io/picto-lite)
 
 Create and share nonograms in the browser! Created using React.
 
