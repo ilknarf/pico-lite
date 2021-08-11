@@ -1,6 +1,6 @@
-# [Picto-Lite](htts://ilknarf.github.io/picto-lite)
+# Picto-Lite
 
-Create and share nonograms in the browser! Created using React.
+Create and share nonograms [in the browser](https://ilknarf.github.io/picto-lite)! Created using React.
 
 Uses CSS Grid to create a playable nonogram board. 
 
