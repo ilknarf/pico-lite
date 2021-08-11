@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/picto-lite/static/js/main.9580811a.chunk.js",
-    "main.js.map": "/picto-lite/static/js/main.9580811a.chunk.js.map",
+    "main.js": "/picto-lite/static/js/main.0fc42316.chunk.js",
+    "main.js.map": "/picto-lite/static/js/main.0fc42316.chunk.js.map",
     "runtime-main.js": "/picto-lite/static/js/runtime-main.b293134a.js",
     "runtime-main.js.map": "/picto-lite/static/js/runtime-main.b293134a.js.map",
-    "static/js/2.2ce3f2ba.chunk.js": "/picto-lite/static/js/2.2ce3f2ba.chunk.js",
-    "static/js/2.2ce3f2ba.chunk.js.map": "/picto-lite/static/js/2.2ce3f2ba.chunk.js.map",
+    "static/js/2.2de58c9e.chunk.js": "/picto-lite/static/js/2.2de58c9e.chunk.js",
+    "static/js/2.2de58c9e.chunk.js.map": "/picto-lite/static/js/2.2de58c9e.chunk.js.map",
     "static/js/3.f649d140.chunk.js": "/picto-lite/static/js/3.f649d140.chunk.js",
     "static/js/3.f649d140.chunk.js.map": "/picto-lite/static/js/3.f649d140.chunk.js.map",
     "index.html": "/picto-lite/index.html",
-    "static/js/2.2ce3f2ba.chunk.js.LICENSE.txt": "/picto-lite/static/js/2.2ce3f2ba.chunk.js.LICENSE.txt"
+    "static/js/2.2de58c9e.chunk.js.LICENSE.txt": "/picto-lite/static/js/2.2de58c9e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b293134a.js",
-    "static/js/2.2ce3f2ba.chunk.js",
-    "static/js/main.9580811a.chunk.js"
+    "static/js/2.2de58c9e.chunk.js",
+    "static/js/main.0fc42316.chunk.js"
   ]
 }
