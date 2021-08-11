@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { SolverBoard } from "components/solver-board";
 import { getNonogramSize } from "util/nonogram";
 import { stringToBoard } from "util/builder";
+import { SolverLayout } from "./styles";
 
 interface PathParams {
   size: string;
@@ -17,9 +18,9 @@ export const Solver = () => {
   const solution = stringToBoard(data, nonogramSize);
 
   return (
-    <>
+    <SolverLayout>
       <SolverBoard solution={solution} onSolve={() => setSolved(true)}/>
       {solved && "SOLVED!"}
-    </>
+    </SolverLayout>
   );
 };

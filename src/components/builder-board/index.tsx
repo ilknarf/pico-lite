@@ -1,6 +1,6 @@
 import * as React from "react";
 import { CellState, Nonogram, NonogramSize } from "models/nonogram";
-import { BoardAction, BoardActionType, NonogramBoard } from "components/nonogram-board";
+import { BoardAction,  NonogramBoard } from "components/nonogram-board";
 import update from "immutability-helper";
 import {
   updateCellState,

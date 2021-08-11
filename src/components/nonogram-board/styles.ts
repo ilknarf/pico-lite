@@ -16,10 +16,10 @@ export const Board = styled.div.attrs(({ sideLength }: BoardProps) => ({
   background-color: ${(props) => props.theme.tertiary};
   border: solid;
   border-color: ${(props) => props.theme.secondary};
-  border-radius: 1rem;
-  border-width: 0.5rem;
+  border-radius: 2vh;
+  border-width: 1vh;
   overflow: hidden;
-  padding: 1rem;
+  padding: 2vh;
   // grid layout for solver, unused for builder
   grid-row: 2;
   grid-column: 2;

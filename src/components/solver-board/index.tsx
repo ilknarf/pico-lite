@@ -6,8 +6,9 @@ import { CellState, Nonogram } from "models/nonogram";
 import { BoardAction, NonogramBoard } from "components/nonogram-board";
 import update from "immutability-helper";
 import { SolverCell } from "components/solver-cell";
-import { SolverGrid, SolverLayout } from "./styles";
+import { SolverGrid, SolverContainer } from "./styles";
 import { NonogramVerticalLabels } from "components/nonogram-vertical-labels";
+import { NonogramHorizontalLabels } from "components/nonogram-horizontal-labels";
 
 export interface Props {
   solution: Nonogram;
@@ -37,9 +38,10 @@ export const SolverBoard = (props: Props) => {
   }, [props.solution, board]);
 
   return (
-    <SolverLayout>
+    <SolverContainer>
       <SolverGrid>
         <NonogramVerticalLabels solution={props.solution}/>
+        <NonogramHorizontalLabels solution={props.solution} />
         <NonogramBoard
           size={nonogramSize}
           board={board}
@@ -53,6 +55,6 @@ export const SolverBoard = (props: Props) => {
           )}
         />
       </SolverGrid>
-    </SolverLayout>
+    </SolverContainer>
   );
 };

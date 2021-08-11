@@ -14,7 +14,8 @@ const getRowVals = (board: Nonogram, row: number) => {
   let consecutiveCells = 0;
 
   for (let i = 0; i < rowLength; i++) {
-    if (board.data[i] === CellState.Filled) {
+    const location = i + row * rowLength;
+    if (board.data[location] === CellState.Filled) {
       consecutiveCells++;
     } else if (consecutiveCells !== 0) {
       rowVals.push(consecutiveCells);
@@ -32,7 +33,6 @@ const getRowVals = (board: Nonogram, row: number) => {
     rowVals.push(0);
   }
 
-  console.log(rowVals[0]);
   return rowVals;
 };
 
@@ -42,8 +42,8 @@ export const NonogramVerticalLabels = ({ solution }: Props) => {
 
   for (let row = 0; row < rowLength; row++) {
     labels[row] = (
-      <LabelContainer>
-        {getRowVals(solution, row)}
+      <LabelContainer key={row}>
+        {getRowVals(solution, row).join(" ")}
       </LabelContainer>
     );
   }
