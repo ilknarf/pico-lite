@@ -8,6 +8,7 @@ import {
   SelectButton,
   SelectButtonContainer,
 } from "views/builder/styles";
+import { TextContainer } from "components/text-container/styles";
 
 export const Builder = () => {
   const [size, setSize] = useState(NonogramSize.Size5x5);
@@ -33,6 +34,13 @@ export const Builder = () => {
           10x10
         </SelectButton>
       </SelectButtonContainer>
+      <TextContainer>
+        <p>
+          How to use: <br />
+          1. Click on cells to create a nonogram (you can drag too!) <br />
+          2. Send the link to share!
+        </p>
+      </TextContainer>
     </BuilderLayout>
   );
 };

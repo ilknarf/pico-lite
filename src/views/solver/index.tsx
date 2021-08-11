@@ -4,6 +4,7 @@ import { SolverBoard } from "components/solver-board";
 import { getNonogramSize } from "util/nonogram";
 import { stringToBoard } from "util/builder";
 import { SolverLayout } from "./styles";
+import { TextContainer } from "components/text-container/styles";
 
 interface PathParams {
   size: string;
@@ -17,6 +18,11 @@ export const Solver = () => {
 
   return (
     <SolverLayout>
+      <TextContainer>
+        <p>
+          Left-click to mark as filled, right-click to mark as empty
+        </p>
+      </TextContainer>
       <SolverBoard solution={solution} />
     </SolverLayout>
   );

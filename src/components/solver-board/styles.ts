@@ -4,7 +4,6 @@ export const SolverContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5vh;
 `;
 
 export const SolverGrid = styled.div`
@@ -19,7 +18,7 @@ interface SolvedBannerProps {
 
 export const SolvedBanner = styled.div<SolvedBannerProps>`
   grid-row: 1/4;
-  grid-column: 4/7;
+  grid-column: 4/6;
 
   display: flex;
   flex-direction: row-reverse;
@@ -33,7 +32,7 @@ export const SolvedBanner = styled.div<SolvedBannerProps>`
 
   transition: transform linear 0.4s;
   ${(props) =>
-    props.solved ? "transform: translateX(0%)" : "transform: translateX(-40%);"}
+    props.solved ? "transform: translateX(50%)" : "transform: translateX(0%);"}
 `;
 
 export const SolvedText = styled.p`
