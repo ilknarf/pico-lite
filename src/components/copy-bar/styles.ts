@@ -1,3 +1,4 @@
+import { MouseEvent } from "react";
 import styled from "styled-components";
 
 export const CopyBarContainer = styled.div`
@@ -38,18 +39,18 @@ export const CopyButton = styled.div`
     color: ${(props) => props.theme.secondary};
   }
 
-  cursor: inherit;
+  cursor: pointer;
 `;
 
 export const CopyTextBar = styled.input.attrs({
   type: "text",
+  onClick: (e: MouseEvent<HTMLInputElement>) => { (e.target as HTMLInputElement).select() },
 })`
   color: ${(props) => props.theme.secondary};
   padding: 1rem;
   font-size: 1rem;
   border: none;
   flex: 1;
-  cursor: inherit;
 
   &:focus {
     outline: none;

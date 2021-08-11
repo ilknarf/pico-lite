@@ -1,9 +1,19 @@
 import * as React from "react";
 
-import { HeaderDiv, HeaderText } from "components/header/styles";
+import { GithubLink, GithubText, HeaderDiv, HeaderText, Link } from "components/header/styles";
 
 export const Header = () => (
   <HeaderDiv>
-    <HeaderText>Picto-Lite</HeaderText>
+    <HeaderText>
+      <Link to={"/"}>
+        Picto-Lite
+      </Link>
+    </HeaderText>
+
+    <GithubText>
+      <GithubLink href={"https://github.com/ilknarf/picto-lite/"}>
+        Github
+      </GithubLink>
+    </GithubText>
   </HeaderDiv>
 );

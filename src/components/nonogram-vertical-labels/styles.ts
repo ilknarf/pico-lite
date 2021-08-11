@@ -9,7 +9,7 @@ export const VerticalContainer = styled.div`
   margin: 0 1vh;
   
   grid-column: 1;
-  grid-row: 1;
+  grid-row: 1/4;
 `;
 
 export const LabelContainer = styled.div`

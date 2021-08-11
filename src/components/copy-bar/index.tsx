@@ -18,9 +18,11 @@ export const CopyBar = (props: Props) => {
   };
 
   return (
-    <CopyBarContainer onClick={onClick} onMouseLeave={onMouseLeave}>
+    <CopyBarContainer>
       <CopyTextBar value={props.val} readOnly />
-      <CopyButton>{copied ? "Copied!" : "Share!"}</CopyButton>
+      <CopyButton onClick={onClick} onMouseLeave={onMouseLeave}>
+        {copied ? "Copied!" : "Share!"}
+      </CopyButton>
     </CopyBarContainer>
   );
 };

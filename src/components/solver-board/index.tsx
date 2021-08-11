@@ -1,18 +1,17 @@
 import * as React from "react";
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { createNonogram, updateCellState } from "util/nonogram";
 import { boardEqual } from "util/solver";
 import { CellState, Nonogram } from "models/nonogram";
 import { BoardAction, NonogramBoard } from "components/nonogram-board";
 import update from "immutability-helper";
 import { SolverCell } from "components/solver-cell";
-import { SolverGrid, SolverContainer } from "./styles";
 import { NonogramVerticalLabels } from "components/nonogram-vertical-labels";
 import { NonogramHorizontalLabels } from "components/nonogram-horizontal-labels";
+import { SolvedBanner, SolvedText, SolverGrid, SolverContainer } from "./styles";
 
 export interface Props {
   solution: Nonogram;
-  onSolve: () => void;
 }
 
 // update to switch block if more actions added
@@ -26,13 +25,14 @@ const boardReducer = (state: Nonogram, action: BoardAction): Nonogram => (
 
 export const SolverBoard = (props: Props) => {
   const nonogramSize = props.solution.size;
+  const [solved, setSolved] = useState(false);
   const [board, boardDispatch] = useReducer<
     React.Reducer<Nonogram, BoardAction>
     >(boardReducer, createNonogram(nonogramSize));
 
   useEffect(() => {
     if (boardEqual(props.solution, board)) {
-      props.onSolve();
+      setSolved(true)
     }
 
   }, [props.solution, board]);
@@ -54,6 +54,12 @@ export const SolverBoard = (props: Props) => {
             />
           )}
         />
+        <SolvedBanner solved={solved}>
+          <SolvedText>
+            {/* don't render hidden text */}
+            {solved && "Solved!"}
+          </SolvedText>
+        </SolvedBanner>
       </SolverGrid>
     </SolverContainer>
   );

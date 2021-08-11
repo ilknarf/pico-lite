@@ -9,6 +9,7 @@ import { useReducer } from "react";
 import { BuilderCell } from "components/builder-cell";
 import { CopyBar } from "components/copy-bar";
 import { createNonogram, buildBoardLink } from "util/nonogram";
+import { TextContainer } from "./styles";
 
 export interface Props {
   size: NonogramSize;
@@ -42,6 +43,13 @@ export const BuilderBoard = (props: Props) => {
           />
         )}
       />
+      <TextContainer>
+        <p>
+          How to use: <br />
+          1. Click on cells to create a picogram <br />
+          2. Send the link to share!
+        </p>
+      </TextContainer>
       <CopyBar val={link} />
       </>
   );

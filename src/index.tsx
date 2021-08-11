@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "themes";
 import { Routes } from "routes";
 import { Header } from "components/header";
@@ -8,8 +9,10 @@ import reportWebVitals from "./reportWebVitals";
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
-      <Header />
-      <Routes />
+      <Router>
+        <Header />
+        <Routes />
+      </Router>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

@@ -20,6 +20,8 @@ const theme = {
   secondary: "black",
   tertiary: "gainsboro",
   alert: "red",
+  success: "green",
+  info: "blue",
 };
 
 export interface Props {
