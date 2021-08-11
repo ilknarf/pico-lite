@@ -6,7 +6,7 @@ export const HorizontalContainer = styled.div`
   justify-content: space-around;
   align-items: flex-start;
   padding: 0.5vh 1.5vh;
-  
+
   grid-column: 2/6;
   grid-row: 4;
 `;

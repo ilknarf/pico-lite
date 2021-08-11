@@ -21,7 +21,7 @@ export const getNonogramSideLength = (size: NonogramSize): number => {
 };
 
 export const getNonogramSize = (size: string) => {
-  switch(size) {
+  switch (size) {
     case "5x5":
       return NonogramSize.Size5x5;
     case "10x10":
@@ -37,18 +37,24 @@ export const getNonogramArrayLength = (size: NonogramSize): number => {
   return sideLength * sideLength;
 };
 
-export const updateCellState = (cellState: CellState, action: BoardActionType = BoardActionType.LeftClick): CellState => {
+export const updateCellState = (
+  cellState: CellState,
+  action: BoardActionType = BoardActionType.LeftClick
+): CellState => {
   // handle right click
   if (action === BoardActionType.RightClick) {
-    return cellState === CellState.Empty ? CellState.None: CellState.Empty;
+    return cellState === CellState.Empty ? CellState.None : CellState.Empty;
   }
 
   // handle left click
-  return cellState === CellState.Empty ? CellState.Filled: CellState.Empty;
+  return cellState === CellState.Empty ? CellState.Filled : CellState.Empty;
 };
 
 // click history for more intuitive drag effect.
-export const createClickHistory = (cellstate: CellState, action: BoardActionType = BoardActionType.LeftClick): ClickHistory => ({
+export const createClickHistory = (
+  cellstate: CellState,
+  action: BoardActionType = BoardActionType.LeftClick
+): ClickHistory => ({
   clickedCellState: cellstate,
   actionType: action,
 });

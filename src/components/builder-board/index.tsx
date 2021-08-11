@@ -1,10 +1,8 @@
 import * as React from "react";
 import { CellState, Nonogram, NonogramSize } from "models/nonogram";
-import { BoardAction,  NonogramBoard } from "components/nonogram-board";
+import { BoardAction, NonogramBoard } from "components/nonogram-board";
 import update from "immutability-helper";
-import {
-  updateCellState,
-} from "util/nonogram";
+import { updateCellState } from "util/nonogram";
 import { useReducer } from "react";
 import { BuilderCell } from "components/builder-cell";
 import { CopyBar } from "components/copy-bar";
@@ -51,6 +49,6 @@ export const BuilderBoard = (props: Props) => {
         </p>
       </TextContainer>
       <CopyBar val={link} />
-      </>
+    </>
   );
 };

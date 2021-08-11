@@ -3,7 +3,10 @@ import { BoardAction } from "components/nonogram-board";
 import { CellState, Nonogram, NonogramSize } from "models/nonogram";
 import { getNonogramArrayLength } from "util/nonogram";
 
-export const createBoardAction = (location: number, type: BoardActionType = BoardActionType.LeftClick): BoardAction => ({
+export const createBoardAction = (
+  location: number,
+  type: BoardActionType = BoardActionType.LeftClick
+): BoardAction => ({
   type,
   location,
 });

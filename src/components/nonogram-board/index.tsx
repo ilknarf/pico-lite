@@ -27,7 +27,10 @@ export interface ClickHistory {
 
 // used to track the drag effect of the nonogram.
 export const MouseClickContext = React.createContext<
-  [ClickHistory | undefined, React.Dispatch<React.SetStateAction<ClickHistory | undefined>>]
+  [
+    ClickHistory | undefined,
+    React.Dispatch<React.SetStateAction<ClickHistory | undefined>>
+  ]
 >([undefined, () => undefined]);
 
 export interface Props {

@@ -48,9 +48,5 @@ export const NonogramHorizontalLabels = ({ solution }: Props) => {
     );
   }
 
-  return (
-    <HorizontalContainer>
-      {labels}
-    </HorizontalContainer>
-  )
+  return <HorizontalContainer>{labels}</HorizontalContainer>;
 };

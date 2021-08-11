@@ -7,7 +7,7 @@ export const VerticalContainer = styled.div`
   align-items: flex-end;
   padding: 2.5vh 0.5vh;
   margin: 0 1vh;
-  
+
   grid-column: 1;
   grid-row: 1/4;
 `;

@@ -10,7 +10,7 @@ export interface Props {
   onAction: (action: BoardActionType) => void;
 }
 
-interface BaseCellProps  {
+interface BaseCellProps {
   cellState: CellState;
   onMouseDown: React.MouseEventHandler<HTMLDivElement>;
   onMouseEnter: React.MouseEventHandler<HTMLDivElement>;
@@ -32,7 +32,8 @@ export const Cell = (props: Props) => {
   const [clickHistory, setClickHistory] = mouseClickContextState;
 
   const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    const actionType = e.button === 0 ? BoardActionType.LeftClick: BoardActionType.RightClick;
+    const actionType =
+      e.button === 0 ? BoardActionType.LeftClick : BoardActionType.RightClick;
     setClickHistory(createClickHistory(props.cellState, actionType));
     props.onAction(actionType);
   };

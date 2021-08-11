@@ -17,7 +17,7 @@ export const Solver = () => {
 
   return (
     <SolverLayout>
-      <SolverBoard solution={solution}/>
+      <SolverBoard solution={solution} />
     </SolverLayout>
   );
 };

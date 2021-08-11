@@ -44,7 +44,9 @@ export const CopyButton = styled.div`
 
 export const CopyTextBar = styled.input.attrs({
   type: "text",
-  onClick: (e: MouseEvent<HTMLInputElement>) => { (e.target as HTMLInputElement).select() },
+  onClick: (e: MouseEvent<HTMLInputElement>) => {
+    (e.target as HTMLInputElement).select();
+  },
 })`
   color: ${(props) => props.theme.secondary};
   padding: 1rem;
