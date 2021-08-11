@@ -61,5 +61,6 @@ export const createClickHistory = (
 
 export const buildBoardLink = (board: Nonogram): string => {
   const size = getNonogramSideLength(board.size);
-  return `${process.env.PUBLIC_URL}/${size}x${size}/${boardToString(board)}`;
+  const baseURL = window.location.hostname + process.env.PUBLIC_URL;
+  return `${baseURL}${size}x${size}/${boardToString(board)}`;
 };
