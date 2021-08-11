@@ -4,11 +4,11 @@ export const HorizontalContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: flex-end;
-  padding: 0 1.5vh;
+  align-items: flex-start;
+  padding: 0.5vh 1.5vh;
   
   grid-column: 2;
-  grid-row: 1;
+  grid-row: 2;
 `;
 
 export const LabelContainer = styled.div`

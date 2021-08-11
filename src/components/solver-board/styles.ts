@@ -10,5 +10,5 @@ export const SolverGrid = styled.div`
   display: grid;
   // extra column for better alignment
   grid-template-columns: 1fr 4fr 1fr;
-  grid-template-rows: 1fr 4fr;
+  grid-template-rows: 3fr 1fr;
 `;
