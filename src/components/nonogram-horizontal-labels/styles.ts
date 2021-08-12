@@ -7,8 +7,8 @@ export const HorizontalContainer = styled.div`
   align-items: flex-start;
   padding: 0.5vh 1.5vh;
 
-  grid-column: 2/6;
-  grid-row: 4;
+  grid-column: 2;
+  grid-row: 2;
 `;
 
 export const LabelContainer = styled.div`

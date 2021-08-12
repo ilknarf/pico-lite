@@ -19,9 +19,7 @@ export const Solver = () => {
   return (
     <SolverLayout>
       <TextContainer>
-        <p>
-          Left-click to mark as filled, right-click to mark as empty
-        </p>
+        <p>Left-click to mark as filled, right-click to mark as empty</p>
       </TextContainer>
       <SolverBoard solution={solution} />
     </SolverLayout>

@@ -21,6 +21,6 @@ export const Board = styled.div.attrs(({ sideLength }: BoardProps) => ({
   overflow: hidden;
   padding: 2vh;
   // grid layout for solver, unused for builder
-  grid-row: 1/4;
-  grid-column: 2/6;
+  grid-row: 1;
+  grid-column: 2;
 `;

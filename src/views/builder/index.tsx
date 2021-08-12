@@ -36,7 +36,6 @@ export const Builder = () => {
       </SelectButtonContainer>
       <TextContainer>
         <p>
-          How to use: <br />
           1. Click on cells to create a nonogram (you can drag too!) <br />
           2. Send the link to share!
         </p>

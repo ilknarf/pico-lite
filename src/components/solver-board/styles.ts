@@ -8,8 +8,8 @@ export const SolverContainer = styled.div`
 
 export const SolverGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-auto-columns: auto;
+  grid-auto-rows: auto;
 `;
 
 interface SolvedBannerProps {
@@ -17,8 +17,8 @@ interface SolvedBannerProps {
 }
 
 export const SolvedBanner = styled.div<SolvedBannerProps>`
-  grid-row: 1/4;
-  grid-column: 4/6;
+  grid-row: 1;
+  grid-column: 2;
 
   display: flex;
   flex-direction: row-reverse;
@@ -32,7 +32,7 @@ export const SolvedBanner = styled.div<SolvedBannerProps>`
 
   transition: transform linear 0.4s;
   ${(props) =>
-    props.solved ? "transform: translateX(50%)" : "transform: translateX(0%);"}
+    props.solved ? "transform: translateX(25%)" : "transform: translateX(0%);"}
 `;
 
 export const SolvedText = styled.p`
