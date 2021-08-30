@@ -1,7 +1,11 @@
 import * as React from "react";
-import { useContext } from "react";
+import { useCallback, useContext, useEffect, useRef } from "react";
 import { CellState } from "models/nonogram";
-import { BoardActionType, MouseClickContext } from "components/nonogram-board";
+import {
+  BoardActionType,
+  ClickHistory,
+  MouseClickContext,
+} from "components/nonogram-board";
 import { createClickHistory } from "util/nonogram";
 import { CellDiv } from "./styles";
 
@@ -28,23 +32,33 @@ const BaseCell = (props: BaseCellProps) => {
 
 export const Cell = (props: Props) => {
   const mouseClickContextState = useContext(MouseClickContext);
-
   const [clickHistory, setClickHistory] = mouseClickContextState;
 
-  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+  // optimize event handlers with refs
+  const clickHistoryRef = useRef<ClickHistory>();
+  useEffect(() => {
+    clickHistoryRef.current = clickHistory;
+  }, [clickHistory]);
+
+  const cellStateRef = useRef<CellState>(CellState.Empty);
+  useEffect(() => {
+    cellStateRef.current = props.cellState;
+  }, [props.cellState]);
+
+  const onMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const actionType =
       e.button === 0 ? BoardActionType.LeftClick : BoardActionType.RightClick;
-    setClickHistory(createClickHistory(props.cellState, actionType));
+    setClickHistory(createClickHistory(cellStateRef.current, actionType));
     props.onAction(actionType);
-  };
+  }, []);
 
   // need to track click type in ClickHistory due to unreliability of MouseEvent.button for mouseenter
   // see https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button
-  const onMouseEnter = () => {
-    if (clickHistory?.clickedCellState === props.cellState) {
-      props.onAction(clickHistory.actionType);
+  const onMouseEnter = useCallback(() => {
+    if (clickHistoryRef.current?.clickedCellState === cellStateRef.current) {
+      props.onAction(clickHistoryRef.current?.actionType);
     }
-  };
+  }, []);
 
   return (
     <BaseCell
